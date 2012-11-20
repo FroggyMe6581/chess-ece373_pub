@@ -49,4 +49,34 @@ public class Square
 		piece = null;			// piece not instantiated here, added by
 								// pointing to a Piece in a method below
 	}
+	
+	public int[] getLocation()
+	{
+		return location;
+	}
+	
+	public int getRank()
+	{
+		return rank;
+	}
+	
+	public char getFile()
+	{
+		return file;
+	}
+	
+	public Piece getPiece()
+	{
+		return piece;
+	}
+	
+	public void setPiece(Piece piece)
+	{
+		this.piece = piece;
+	}
+	
+	public void removePiece()
+	{
+		piece = null;
+	}
 }
