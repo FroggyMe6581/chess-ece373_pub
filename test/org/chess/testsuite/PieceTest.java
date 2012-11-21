@@ -18,12 +18,12 @@ public class PieceTest {
 		}
 
 		public void movePiece(Square sq) {
-			this.setLocation(sq);
+			this.setCurrentSquare(sq);
 		}
 	}
 
 	@Test
-	public void LocationTest() {
+	public void currentSquareTest() {
 		fail("Not yet implemented");
 	}
 }

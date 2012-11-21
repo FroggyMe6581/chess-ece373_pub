@@ -7,11 +7,11 @@ public abstract class Piece {
 		location = sq;
 	}
 
-	public Square getLocation() {
+	public Square getCurrentSquare() {
 		return location;
 	}
 
-	public void setLocation(Square sq) {
+	public void setCurrentSquare(Square sq) {
 		location = sq;
 	}
 
