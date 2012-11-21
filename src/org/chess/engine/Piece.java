@@ -4,15 +4,19 @@ public abstract class Piece {
 	private Square location;
 
 	public Piece(Square sq) {
-		location = sq;
+		setCurrentSquare(sq);
 	}
 
-	public Square getCurrentSquare() {
+	public final Square getCurrentSquare() {
 		return location;
 	}
 
-	public void setCurrentSquare(Square sq) {
+	public final void setCurrentSquare(Square sq) {
+		if (location != null)
+			location.removePiece();
+
 		location = sq;
+		sq.setPiece(this);
 	}
 
 	public abstract boolean isValidMove(Square sq);

@@ -1,29 +1,43 @@
 package org.chess.testsuite;
 
 import static org.junit.Assert.*;
+import java.util.Random;
 
 import org.junit.Test;
-import org.chess.engine.Piece;
+import org.junit.Before;
+import org.junit.After;
 import org.chess.engine.Square;
+import org.chess.engine.Piece;
 
 public class PieceTest {
+	int rank, file;
+	Square sq1;
 
-	public class TestPiece extends Piece {
-		public TestPiece(Square sq) {
-			super(sq);
-		}
+	@Before
+	public void setUp() {
+		Random rnd = new Random();
+		rnd.setSeed(System.currentTimeMillis());
 
-		public boolean isValidMove(Square sq) {
-			return true;
-		}
+		rank = rnd.nextInt(7) + 1;
+		file = rnd.nextInt(7) + 1;
 
-		public void movePiece(Square sq) {
-			this.setCurrentSquare(sq);
-		}
+		sq1 = new Square(file, rank);
+	}
+
+	@After
+	public void tearDown() {
+		sq1 = null;
+		rank = -1;
+		file = -1;
 	}
 
 	@Test
 	public void currentSquareTest() {
-		fail("Not yet implemented");
+		Piece p = new TestPieceHelper(sq1);
+		Square cur = p.getCurrentSquare();
+
+		assertEquals(sq1, cur);
+		assertEquals(cur.getLocation()[0], file);
+		assertEquals(cur.getLocation()[1], rank);
 	}
 }
