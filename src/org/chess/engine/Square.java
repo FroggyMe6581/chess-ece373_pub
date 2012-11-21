@@ -18,6 +18,9 @@ public class Square {
 	 */
 
 	public Square(int x, int y) {
+		if ((x > 8 || x < 1) || (y > 8 || y < 1))
+			throw new IllegalArgumentException();
+
 		location = new int[2];
 		location[0] = x;
 		location[1] = y;
@@ -49,8 +52,7 @@ public class Square {
 			file = 'h';
 			break;
 		default:
-			file = 'x';
-			break;
+			throw new IllegalArgumentException();
 		}
 
 		piece = null; // piece not instantiated here, added by
@@ -82,14 +84,28 @@ public class Square {
 	}
 
 	public boolean equals(Object obj) {
-		throw new UnsupportedOperationException();
+		if (obj == null)
+			throw new IllegalArgumentException();
+
+		if (obj.getClass() != this.getClass())
+			return false;
+
+		Square s = (Square) obj;
+		return (s.getLocation()[0] == this.getLocation()[0])
+				&& (s.getLocation()[1] == this.getLocation()[1]);
 	}
 
 	public boolean sharesRowWith(Square sq) {
-		throw new UnsupportedOperationException();
+		if (sq == null)
+			throw new IllegalArgumentException();
+
+		return sq.getLocation()[1] == this.getLocation()[1];
 	}
 
 	public boolean sharesColumnWith(Square sq) {
-		throw new UnsupportedOperationException();
+		if (sq == null)
+			throw new IllegalArgumentException();
+
+		return sq.getLocation()[0] == this.getLocation()[0];
 	}
 }
