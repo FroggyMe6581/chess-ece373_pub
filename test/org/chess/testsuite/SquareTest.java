@@ -144,8 +144,8 @@ public class SquareTest {
 		assertTrue(sq1.sharesRowWith(sq5));
 
 		if (rank == 5)
-			assertTrue(sq1.sharesColumnWith(rndsq));
+			assertTrue(sq1.sharesRowWith(rndsq));
 		else
-			assertFalse(sq1.sharesColumnWith(rndsq));
+			assertFalse(sq1.sharesRowWith(rndsq));
 	}
 }
