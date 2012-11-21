@@ -1,7 +1,25 @@
 package org.chess.engine;
 
-public class Piece
+public abstract class Piece
 {
 	private Square location;
-	//etc, just trying out github commit.
+	
+	public Piece(Square sq)
+	{
+		location = sq;
+	}
+	
+	public Square getLocation()
+	{
+		return location;
+	}
+	
+	public void setLocation(Square sq)
+	{
+		location = sq;
+	}
+	
+	public abstract boolean isValidMove(Square sq);
+	
+	public abstract void movePiece(Square sq);
 }
