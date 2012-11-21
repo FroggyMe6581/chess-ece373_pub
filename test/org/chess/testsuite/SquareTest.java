@@ -10,6 +10,11 @@ public class SquareTest {
 	public void getLocationTest() {
 		fail("Not yet implemented");
 	}
+	
+	@Test
+	public void equalsTest() {
+		fail("Not yet implemented");
+	}
 
 	@Test
 	public void getRankTest() {

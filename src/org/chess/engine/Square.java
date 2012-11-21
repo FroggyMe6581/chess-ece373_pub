@@ -80,4 +80,8 @@ public class Square {
 	public void removePiece() {
 		piece = null;
 	}
+
+	public boolean equals(Object obj) {
+		throw new UnsupportedOperationException();
+	}
 }
