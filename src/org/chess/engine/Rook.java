@@ -12,21 +12,20 @@ public class Rook extends Piece {
 		return name;
 	}
 
-	public boolean isValidMove(Square sq)
 	// Square sq is potential destination square for piece
-	{
-		if ((sq.getLocation()[0] == this.getCurrentSquare().getLocation()[0] && sq
-				.getLocation()[1] != this.getCurrentSquare().getLocation()[1])
-				|| (sq.getLocation()[1] == this.getCurrentSquare().getLocation()[1] && sq
-						.getLocation()[0] != this.getCurrentSquare().getLocation()[0])) {
+	public boolean isValidMove(Square sq) {
+		if (sq.sharesRowWith(this.getCurrentSquare())
+				&& !sq.sharesColumnWith(this.getCurrentSquare()))
 			return true;
-		} else
+		else if (!sq.sharesRowWith(this.getCurrentSquare())
+				&& sq.sharesColumnWith(this.getCurrentSquare()))
+			return true;
+		else
 			return false;
 	}
 
-	public void movePiece(Square sq)
 	// Square sq is destination square; move there if legal
-	{
+	public void movePiece(Square sq) {
 		if (isValidMove(sq)) {
 			this.getCurrentSquare().removePiece();
 			sq.setPiece(this);

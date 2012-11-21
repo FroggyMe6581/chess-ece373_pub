@@ -10,7 +10,7 @@ public class SquareTest {
 	public void getLocationTest() {
 		fail("Not yet implemented");
 	}
-	
+
 	@Test
 	public void equalsTest() {
 		fail("Not yet implemented");
@@ -29,6 +29,16 @@ public class SquareTest {
 	// Tests getPeice, setPeice and removePeice
 	@Test
 	public void squarePeiceTest() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void sharesRowWithTest() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void sharesColWithTest() {
 		fail("Not yet implemented");
 	}
 }

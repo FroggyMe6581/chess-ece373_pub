@@ -84,4 +84,12 @@ public class Square {
 	public boolean equals(Object obj) {
 		throw new UnsupportedOperationException();
 	}
+
+	public boolean sharesRowWith(Square sq) {
+		throw new UnsupportedOperationException();
+	}
+
+	public boolean sharesColumnWith(Square sq) {
+		throw new UnsupportedOperationException();
+	}
 }
