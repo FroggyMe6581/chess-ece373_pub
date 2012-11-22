@@ -2,6 +2,7 @@ package org.chess.engine;
 
 public abstract class Piece {
 	private Square location;
+	private String name;
 
 	public Piece(Square sq) {
 		setCurrentSquare(sq);
@@ -22,4 +23,15 @@ public abstract class Piece {
 	public abstract boolean isValidMove(Square sq);
 
 	public abstract void movePiece(Square sq);
+
+	
+	//setter for String name used in the constructor for subclasses of Piece.
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	//getter for String name
+	public String getPieceType() {
+		return name;
+	}
 }

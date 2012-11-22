@@ -2,14 +2,9 @@ package org.chess.engine;
 
 public class Rook extends Piece {
 
-	private String name = "Rook";
-
 	public Rook(Square sq) {
 		super(sq);
-	}
-
-	public String getPieceType() {
-		return name;
+		setName("Rook");
 	}
 
 	// Square sq is potential destination square for piece

@@ -46,18 +46,18 @@ public class SquareTest {
 	}
 
 	@Test
-	public void getLocationTest() {
-		assertEquals(sq1.getLocation()[0], 5);
-		assertEquals(sq1.getLocation()[1], 5);
+	public void getSquareLocationTest() {
+		assertEquals(sq1.getSquareLocation()[0], 5);
+		assertEquals(sq1.getSquareLocation()[1], 5);
 
-		assertEquals(sq2.getLocation()[0], 5);
-		assertEquals(sq2.getLocation()[1], 1);
+		assertEquals(sq2.getSquareLocation()[0], 5);
+		assertEquals(sq2.getSquareLocation()[1], 1);
 
-		assertEquals(sq3.getLocation()[0], 1);
-		assertEquals(sq3.getLocation()[1], 5);
+		assertEquals(sq3.getSquareLocation()[0], 1);
+		assertEquals(sq3.getSquareLocation()[1], 5);
 
-		assertEquals(rndsq.getLocation()[0], file);
-		assertEquals(rndsq.getLocation()[1], rank);
+		assertEquals(rndsq.getSquareLocation()[0], file);
+		assertEquals(rndsq.getSquareLocation()[1], rank);
 	}
 
 	@Test

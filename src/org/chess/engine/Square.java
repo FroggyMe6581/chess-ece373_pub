@@ -1,6 +1,10 @@
 package org.chess.engine;
 
-public class Square {
+import java.awt.Color;
+import javax.swing.JTextField;
+
+public class Square extends JTextField {
+	private static final long serialVersionUID = 1L;
 	private Piece piece;
 	private int[] location;
 	private int rank; // rows on the chess board, 1 to 8
@@ -54,12 +58,30 @@ public class Square {
 		default:
 			throw new IllegalArgumentException();
 		}
+		
+		// set color of square based on its location in the grid
+		if( y % 2 == 0 ) //if even row
+		{
+			if ( x % 2 == 0 )
+				this.setBackground(Color.GRAY);
+			else
+				this.setBackground(Color.WHITE);
+		}
+		else //if odd row
+		{
+			if ( x % 2 == 0 )
+				this.setBackground(Color.WHITE);
+			else
+				this.setBackground(Color.GRAY);
+		}
 
-		piece = null; // piece not instantiated here, added by
+		this.setEditable(false);
+		
+		piece = null; 	// piece not instantiated here, added by
 						// pointing to a Piece in a method below
 	}
 
-	public int[] getLocation() {
+	public int[] getSquareLocation() {
 		return location;
 	}
 
@@ -77,10 +99,12 @@ public class Square {
 
 	public void setPiece(Piece piece) {
 		this.piece = piece;
+		this.setText(piece.getPieceType());
 	}
 
 	public void removePiece() {
 		piece = null;
+		this.setText("");
 	}
 
 	public boolean equals(Object obj) {
@@ -91,21 +115,21 @@ public class Square {
 			return false;
 
 		Square s = (Square) obj;
-		return (s.getLocation()[0] == this.getLocation()[0])
-				&& (s.getLocation()[1] == this.getLocation()[1]);
+		return (s.getSquareLocation()[0] == this.getSquareLocation()[0])
+				&& (s.getSquareLocation()[1] == this.getSquareLocation()[1]);
 	}
 
 	public boolean sharesRowWith(Square sq) {
 		if (sq == null)
 			throw new IllegalArgumentException();
 
-		return sq.getLocation()[1] == this.getLocation()[1];
+		return sq.getSquareLocation()[1] == this.getSquareLocation()[1];
 	}
 
 	public boolean sharesColumnWith(Square sq) {
 		if (sq == null)
 			throw new IllegalArgumentException();
 
-		return sq.getLocation()[0] == this.getLocation()[0];
+		return sq.getSquareLocation()[0] == this.getSquareLocation()[0];
 	}
 }

@@ -37,7 +37,7 @@ public class PieceTest {
 		Square cur = p.getCurrentSquare();
 
 		assertEquals(sq1, cur);
-		assertEquals(cur.getLocation()[0], file);
-		assertEquals(cur.getLocation()[1], rank);
+		assertEquals(cur.getSquareLocation()[0], file);
+		assertEquals(cur.getSquareLocation()[1], rank);
 	}
 }
