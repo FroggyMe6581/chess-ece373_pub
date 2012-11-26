@@ -2,8 +2,8 @@ package org.chess.engine;
 
 public class Rook extends Piece {
 
-	public Rook(Square sq) {
-		super(sq);
+	public Rook(Square sq, PieceColor color) {
+		super(sq, color);
 		setName("Rook");
 	}
 

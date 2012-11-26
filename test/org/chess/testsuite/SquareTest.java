@@ -7,6 +7,7 @@ import java.util.Random;
 import org.junit.Test;
 import org.junit.Before;
 import org.junit.After;
+import org.chess.engine.PieceColor;
 import org.chess.engine.Square;
 
 public class SquareTest {
@@ -114,7 +115,7 @@ public class SquareTest {
 	public void squarePeiceTest() {
 		assertNull(sq1.getPiece());
 
-		TestPieceHelper p = new TestPieceHelper(sq1);
+		TestPieceHelper p = new TestPieceHelper(sq1, PieceColor.BLACK);
 		assertEquals(p, sq1.getPiece());
 
 		sq1.removePiece();

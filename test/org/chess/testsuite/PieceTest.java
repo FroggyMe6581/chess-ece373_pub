@@ -6,6 +6,7 @@ import java.util.Random;
 import org.junit.Test;
 import org.junit.Before;
 import org.junit.After;
+import org.chess.engine.PieceColor;
 import org.chess.engine.Square;
 import org.chess.engine.Piece;
 
@@ -33,7 +34,7 @@ public class PieceTest {
 
 	@Test
 	public void currentSquareTest() {
-		Piece p = new TestPieceHelper(sq1);
+		Piece p = new TestPieceHelper(sq1, PieceColor.BLACK);
 		Square cur = p.getCurrentSquare();
 
 		assertEquals(sq1, cur);

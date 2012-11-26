@@ -65,12 +65,12 @@ public class Square extends JTextField {
 			if ( x % 2 == 0 )
 				this.setBackground(Color.GRAY);
 			else
-				this.setBackground(Color.WHITE);
+				this.setBackground(Color.LIGHT_GRAY);
 		}
 		else //if odd row
 		{
 			if ( x % 2 == 0 )
-				this.setBackground(Color.WHITE);
+				this.setBackground(Color.LIGHT_GRAY);
 			else
 				this.setBackground(Color.GRAY);
 		}
@@ -98,6 +98,14 @@ public class Square extends JTextField {
 	}
 
 	public void setPiece(Piece piece) {
+		PieceColor color = piece.getPieceColor();
+		switch (color) {
+		case BLACK: this.setForeground(Color.BLACK);
+					break;
+					
+		case WHITE: this.setForeground(Color.YELLOW);
+					break;
+		}
 		this.piece = piece;
 		this.setText(piece.getPieceType());
 	}

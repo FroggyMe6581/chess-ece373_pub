@@ -3,8 +3,10 @@ package org.chess.engine;
 public abstract class Piece {
 	private Square location;
 	private String name;
+	private PieceColor color;
 
-	public Piece(Square sq) {
+	public Piece(Square sq, PieceColor color) {
+		this.color = color;
 		setCurrentSquare(sq);
 	}
 
@@ -18,6 +20,10 @@ public abstract class Piece {
 
 		location = sq;
 		sq.setPiece(this);
+	}
+	
+	public final PieceColor getPieceColor() {
+		return color;
 	}
 
 	public abstract boolean isValidMove(Square sq);
