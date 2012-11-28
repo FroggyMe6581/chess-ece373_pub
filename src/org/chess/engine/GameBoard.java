@@ -25,7 +25,9 @@ public class GameBoard extends JPanel {
 				squares[j-1][i-1] = currentSquare;
 			}
 		
-		squares[8-1][8-1].setPiece(new Rook(squares[8-1][8-1]));
-		squares[1-1][8-1].setPiece(new Rook(squares[1-1][8-1]));
+		squares[8-1][8-1].setPiece(new Rook(squares[8-1][8-1], PieceColor.BLACK));
+		squares[1-1][8-1].setPiece(new Rook(squares[1-1][8-1], PieceColor.BLACK));
+		squares[8-1][1-1].setPiece(new Rook(squares[8-1][1-1], PieceColor.WHITE));
+		squares[1-1][1-1].setPiece(new Rook(squares[1-1][1-1], PieceColor.WHITE));
 	}
 }

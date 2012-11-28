@@ -8,6 +8,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import org.chess.engine.PieceColor;
 import org.chess.engine.Rook;
 import org.chess.engine.Square;
 
@@ -29,7 +30,7 @@ public class RookTest {
 
 		sq1 = new Square(file, rank);
 		sq2 = new Square(file2, rank2);
-		r = new Rook(sq1);
+		r = new Rook(sq1, PieceColor.BLACK);
 	}
 
 	@After
