@@ -28,7 +28,7 @@ public abstract class Piece {
 
 	public abstract boolean isValidMove(Square sq);
 
-	public abstract void movePiece(Square sq);
+	public abstract boolean movePiece(Square sq);
 
 	
 	//setter for String name used in the constructor for subclasses of Piece.

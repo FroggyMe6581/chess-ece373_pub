@@ -1,6 +1,10 @@
 package org.chess.engine;
 
 import java.awt.Color;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+
+import javax.swing.BorderFactory;
 import javax.swing.JTextField;
 
 public class Square extends JTextField {
@@ -9,6 +13,8 @@ public class Square extends JTextField {
 	private int[] location;
 	private int rank; // rows on the chess board, 1 to 8
 	private char file; // columns on the chess board, a to h
+	
+	private static GameBoard board;
 
 	/*
 	 * Note that 1a is a black square in lower left corner, with white player on
@@ -21,7 +27,7 @@ public class Square extends JTextField {
 	 * proper chess game play when the game is recorded.
 	 */
 
-	public Square(int x, int y) {
+	public Square(int x, int y, GameBoard gb) {
 		if ((x > 8 || x < 1) || (y > 8 || y < 1))
 			throw new IllegalArgumentException();
 
@@ -79,6 +85,11 @@ public class Square extends JTextField {
 		
 		piece = null; 	// piece not instantiated here, added by
 						// pointing to a Piece in a method below
+		
+		board = gb;
+		
+		addMouseListener(new MouseHandler());
+		setBorder(BorderFactory.createEmptyBorder());
 	}
 
 	public int[] getSquareLocation() {
@@ -139,5 +150,55 @@ public class Square extends JTextField {
 			throw new IllegalArgumentException();
 
 		return sq.getSquareLocation()[0] == this.getSquareLocation()[0];
+	}
+	
+	/*
+	public void functionForTestingJComponentMethods()
+	{
+		this.board.squareSelected(new Square(1,1,board));
+	}
+	*/
+	
+	private class MouseHandler extends MouseAdapter
+	{
+		public void mouseClicked(MouseEvent e)
+		{
+			if (Square.this.contains(e.getPoint()))
+			{
+				//Square.this.setBackground(Color.RED);
+				Square.board.squareSelected(Square.this);
+			}
+			//firstClicked = find(e.getPoint());
+			//firstClicked = (Square) e.getSource();
+			//firstClicked.setBackground(Color.RED);
+		}
+		
+		/*
+		public void mousePressed(MouseEvent e) 
+		{
+			//Add a new square if the cursor is not inside any square
+			current = find(e.getPoint());
+			if(current == null) add(e.getPoint());
+		}
+		
+		public void mouseClicked(MouseEvent e)
+		{
+			Piece piece;
+			if (firstClick) {
+				firstClicked = find(e.getPoint());
+				if (firstClicked != null) {
+					piece = firstClicked.getPiece();
+					if (piece != null) {
+						
+					}
+				}
+			}
+			current = find(e.getPoint());
+			if((current != null) && (e.getClickCount() >= 2))
+			{
+				squares.remove(current);
+				repaint();
+			}
+		} */
 	}
 }
