@@ -13,7 +13,8 @@ class TestPieceHelper extends Piece {
 		return true;
 	}
 
-	public void movePiece(Square sq) {
+	public boolean movePiece(Square sq) {
 		this.setCurrentSquare(sq);
+		return true;
 	}
 }

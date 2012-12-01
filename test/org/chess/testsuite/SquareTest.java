@@ -7,15 +7,20 @@ import java.util.Random;
 import org.junit.Test;
 import org.junit.Before;
 import org.junit.After;
+import org.chess.engine.GameBoard;
 import org.chess.engine.PieceColor;
 import org.chess.engine.Square;
 
 public class SquareTest {
-	Square sq1 = new Square(5, 5);
-	Square sq2 = new Square(5, 1);
-	Square sq3 = new Square(1, 5);
-	Square sq4 = new Square(3, 3);
-	Square sq5 = new Square(5, 5);
+	
+	GameBoard genericGameBoard = new GameBoard();
+	
+	
+	Square sq1 = new Square(5, 5, genericGameBoard);
+	Square sq2 = new Square(5, 1, genericGameBoard);
+	Square sq3 = new Square(1, 5, genericGameBoard);
+	Square sq4 = new Square(3, 3, genericGameBoard);
+	Square sq5 = new Square(5, 5, genericGameBoard);
 	Square rndsq;
 	int rank, file;
 
@@ -26,12 +31,12 @@ public class SquareTest {
 
 		rank = rnd.nextInt(7) + 1;
 		file = rnd.nextInt(7) + 1;
-		sq1 = new Square(5, 5);
-		sq2 = new Square(5, 1);
-		sq3 = new Square(1, 5);
-		sq4 = new Square(3, 3);
-		sq5 = new Square(5, 5);
-		rndsq = new Square(file, rank);
+		sq1 = new Square(5, 5, genericGameBoard);
+		sq2 = new Square(5, 1, genericGameBoard);
+		sq3 = new Square(1, 5, genericGameBoard);
+		sq4 = new Square(3, 3, genericGameBoard);
+		sq5 = new Square(5, 5, genericGameBoard);
+		rndsq = new Square(file, rank, genericGameBoard);
 	}
 
 	@After
@@ -86,28 +91,28 @@ public class SquareTest {
 
 	@Test
 	public void getFileTest() {
-		assertEquals(new Square(1, 1).getFile(), 'a');
-		assertEquals(new Square(2, 1).getFile(), 'b');
-		assertEquals(new Square(3, 1).getFile(), 'c');
-		assertEquals(new Square(4, 1).getFile(), 'd');
-		assertEquals(new Square(5, 1).getFile(), 'e');
-		assertEquals(new Square(6, 1).getFile(), 'f');
-		assertEquals(new Square(7, 1).getFile(), 'g');
-		assertEquals(new Square(8, 1).getFile(), 'h');
-		assertEquals(new Square(8, 1).getFile(), 'h');
+		assertEquals(new Square(1, 1, genericGameBoard).getFile(), 'a');
+		assertEquals(new Square(2, 1, genericGameBoard).getFile(), 'b');
+		assertEquals(new Square(3, 1, genericGameBoard).getFile(), 'c');
+		assertEquals(new Square(4, 1, genericGameBoard).getFile(), 'd');
+		assertEquals(new Square(5, 1, genericGameBoard).getFile(), 'e');
+		assertEquals(new Square(6, 1, genericGameBoard).getFile(), 'f');
+		assertEquals(new Square(7, 1, genericGameBoard).getFile(), 'g');
+		assertEquals(new Square(8, 1, genericGameBoard).getFile(), 'h');
+		assertEquals(new Square(8, 1, genericGameBoard).getFile(), 'h');
 		assertEquals(rndsq.getFile(), (char) (96 + file));
 	}
 
 	@Test(expected = IllegalArgumentException.class)
 	public void fileOutOfBounds() {
-		new Square(0, 1);
-		new Square(9, 1);
+		new Square(0, 1, genericGameBoard);
+		new Square(9, 1, genericGameBoard);
 	}
 
 	@Test(expected = IllegalArgumentException.class)
 	public void rankOutOfBounds() {
-		new Square(8, 9);
-		new Square(8, 1);
+		new Square(8, 9, genericGameBoard);
+		new Square(8, 1, genericGameBoard);
 	}
 
 	// Tests getPeice, setPeice and removePeice

@@ -6,6 +6,7 @@ import java.util.Random;
 import org.junit.Test;
 import org.junit.Before;
 import org.junit.After;
+import org.chess.engine.GameBoard;
 import org.chess.engine.PieceColor;
 import org.chess.engine.Square;
 import org.chess.engine.Piece;
@@ -13,6 +14,8 @@ import org.chess.engine.Piece;
 public class PieceTest {
 	int rank, file;
 	Square sq1;
+	
+	GameBoard genericGameBoard = new GameBoard();
 
 	@Before
 	public void setUp() {
@@ -22,7 +25,7 @@ public class PieceTest {
 		rank = rnd.nextInt(7) + 1;
 		file = rnd.nextInt(7) + 1;
 
-		sq1 = new Square(file, rank);
+		sq1 = new Square(file, rank, genericGameBoard);
 	}
 
 	@After

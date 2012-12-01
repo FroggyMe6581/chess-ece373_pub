@@ -155,7 +155,7 @@ public class Square extends JTextField {
 	/*
 	public void functionForTestingJComponentMethods()
 	{
-		this.board.squareSelected(new Square(1,1,board));
+		board.squareSelected(new Square(1,1,board));
 	}
 	*/
 	
@@ -168,37 +168,6 @@ public class Square extends JTextField {
 				//Square.this.setBackground(Color.RED);
 				Square.board.squareSelected(Square.this);
 			}
-			//firstClicked = find(e.getPoint());
-			//firstClicked = (Square) e.getSource();
-			//firstClicked.setBackground(Color.RED);
 		}
-		
-		/*
-		public void mousePressed(MouseEvent e) 
-		{
-			//Add a new square if the cursor is not inside any square
-			current = find(e.getPoint());
-			if(current == null) add(e.getPoint());
-		}
-		
-		public void mouseClicked(MouseEvent e)
-		{
-			Piece piece;
-			if (firstClick) {
-				firstClicked = find(e.getPoint());
-				if (firstClicked != null) {
-					piece = firstClicked.getPiece();
-					if (piece != null) {
-						
-					}
-				}
-			}
-			current = find(e.getPoint());
-			if((current != null) && (e.getClickCount() >= 2))
-			{
-				squares.remove(current);
-				repaint();
-			}
-		} */
 	}
 }

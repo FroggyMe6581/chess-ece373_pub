@@ -8,8 +8,8 @@ import javax.swing.JPanel;
 public class GameBoard extends JPanel {
 	private static final long serialVersionUID = 1L;
 	private Square[][] squares;
-	private Square firstClicked;
-	private Square secondClicked;
+	//private Square firstClicked;		//not necessary, squareSelected(Square) now passes these Squares
+	//private Square secondClicked;		//not necessary, squareSelected(Square) now passes these Squares
 	private Piece currentPiece;
 	private boolean firstClick;
 	private boolean whiteTurn;
@@ -36,8 +36,8 @@ public class GameBoard extends JPanel {
 		squares[8-1][1-1].setPiece(new Rook(squares[8-1][1-1], PieceColor.WHITE));
 		squares[1-1][1-1].setPiece(new Rook(squares[1-1][1-1], PieceColor.WHITE));
 		
-		firstClicked = null;
-		secondClicked = null;
+		//firstClicked = null;
+		//secondClicked = null;
 		currentPiece = null;
 		
 		whiteTurn = true;
