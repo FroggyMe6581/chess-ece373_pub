@@ -20,9 +20,12 @@ public class Rook extends Piece {
 	}
 
 	// Square sq is destination square; move there if legal
-	public void movePiece(Square sq) {
-		if (isValidMove(sq))
+	public boolean movePiece(Square sq) {
+		if (isValidMove(sq)) {
 			super.setCurrentSquare(sq);
+			return true;
+		}
+		return false;
 	}
 
 }

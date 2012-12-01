@@ -8,6 +8,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import org.chess.engine.GameBoard;
 import org.chess.engine.PieceColor;
 import org.chess.engine.Rook;
 import org.chess.engine.Square;
@@ -16,6 +17,8 @@ public class RookTest {
 	int file, rank, file2, rank2;
 	Square sq1, sq2;
 	Rook r;
+	
+	GameBoard genericGameBoard = new GameBoard();
 
 	@Before
 	public void setUp() {
@@ -28,8 +31,8 @@ public class RookTest {
 		rank2 = rnd.nextInt(7) + 1;
 		file2 = rnd.nextInt(7) + 1;
 
-		sq1 = new Square(file, rank);
-		sq2 = new Square(file2, rank2);
+		sq1 = new Square(file, rank, genericGameBoard);
+		sq2 = new Square(file2, rank2, genericGameBoard);
 		r = new Rook(sq1, PieceColor.BLACK);
 	}
 
