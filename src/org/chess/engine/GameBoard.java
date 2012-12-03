@@ -2,16 +2,12 @@ package org.chess.engine;
 
 import java.awt.ComponentOrientation;
 import java.awt.GridLayout;
-//import java.awt.event.MouseAdapter;
-//import java.awt.event.MouseEvent;
 
 import javax.swing.JPanel;
 
 public class GameBoard extends JPanel {
 	private static final long serialVersionUID = 1L;
 	private Square[][] squares;
-	//private Square firstClicked;		//not necessary, squareSelected(Square) now passes these Squares
-	//private Square secondClicked;		//not necessary, squareSelected(Square) now passes these Squares
 	private Piece currentPiece;
 	private boolean firstClick;
 	private boolean whiteTurn;
@@ -73,35 +69,68 @@ public class GameBoard extends JPanel {
 		squares[6-1][1-1].setPiece(new Bishop(squares[6-1][1-1], PieceColor.WHITE));
 		
 		
-		//firstClicked = null;
-		//secondClicked = null;
 		currentPiece = null;
 		
 		whiteTurn = true;
 		firstClick = true;
-		
-		//addMouseListener(new MouseHandler());
 	}
 	
-	
-	
-	
-	//methods
-	
-	
-	//not necessary, as each square checks itself when the mouse is clicked (and didn't work)
-	//Find the square containing the clicked point
-	/*
-	public Square find(Point p)
+	public void reset()
 	{
-		for (Square[] sa : squares)
-			for (Square s : sa)
-				if (s.contains(p)) return s;
-		return null;
+		// clear all pieces
+		for(int i = 8; i > 0; i--)			//i is y value
+			for(int j = 8; j > 0; j--)		//j is x value
+				squares[j-1][i-1].removePiece();
+		
+		System.gc();
+		
+		squares[8-1][8-1].setPiece(new Rook(squares[8-1][8-1], PieceColor.BLACK));
+		squares[1-1][8-1].setPiece(new Rook(squares[1-1][8-1], PieceColor.BLACK));
+		squares[8-1][1-1].setPiece(new Rook(squares[8-1][1-1], PieceColor.WHITE));
+		squares[1-1][1-1].setPiece(new Rook(squares[1-1][1-1], PieceColor.WHITE));
+		
+		squares[1-1][7-1].setPiece(new Pawn(squares[1-1][7-1], PieceColor.BLACK));
+		squares[2-1][7-1].setPiece(new Pawn(squares[2-1][7-1], PieceColor.BLACK));
+		squares[3-1][7-1].setPiece(new Pawn(squares[3-1][7-1], PieceColor.BLACK));
+		squares[4-1][7-1].setPiece(new Pawn(squares[4-1][7-1], PieceColor.BLACK));
+		squares[5-1][7-1].setPiece(new Pawn(squares[5-1][7-1], PieceColor.BLACK));
+		squares[6-1][7-1].setPiece(new Pawn(squares[6-1][7-1], PieceColor.BLACK));
+		squares[7-1][7-1].setPiece(new Pawn(squares[7-1][7-1], PieceColor.BLACK));
+		squares[8-1][7-1].setPiece(new Pawn(squares[8-1][7-1], PieceColor.BLACK));
+		
+		squares[1-1][2-1].setPiece(new Pawn(squares[1-1][2-1], PieceColor.WHITE));
+		squares[2-1][2-1].setPiece(new Pawn(squares[2-1][2-1], PieceColor.WHITE));
+		squares[3-1][2-1].setPiece(new Pawn(squares[3-1][2-1], PieceColor.WHITE));
+		squares[4-1][2-1].setPiece(new Pawn(squares[4-1][2-1], PieceColor.WHITE));
+		squares[5-1][2-1].setPiece(new Pawn(squares[5-1][2-1], PieceColor.WHITE));
+		squares[6-1][2-1].setPiece(new Pawn(squares[6-1][2-1], PieceColor.WHITE));
+		squares[7-1][2-1].setPiece(new Pawn(squares[7-1][2-1], PieceColor.WHITE));
+		squares[8-1][2-1].setPiece(new Pawn(squares[8-1][2-1], PieceColor.WHITE));
+		
+		squares[5-1][8-1].setPiece(new King(squares[5-1][8-1], PieceColor.BLACK));
+		squares[5-1][1-1].setPiece(new King(squares[5-1][1-1], PieceColor.WHITE));
+		
+		squares[4-1][8-1].setPiece(new Queen(squares[4-1][8-1], PieceColor.BLACK));
+		squares[4-1][1-1].setPiece(new Queen(squares[4-1][1-1], PieceColor.WHITE));
+		
+		squares[2-1][8-1].setPiece(new Knight(squares[2-1][8-1], PieceColor.BLACK));
+		squares[7-1][8-1].setPiece(new Knight(squares[7-1][8-1], PieceColor.BLACK));
+		squares[2-1][1-1].setPiece(new Knight(squares[2-1][1-1], PieceColor.WHITE));
+		squares[7-1][1-1].setPiece(new Knight(squares[7-1][1-1], PieceColor.WHITE));
+		
+		squares[3-1][8-1].setPiece(new Bishop(squares[3-1][8-1], PieceColor.BLACK));
+		squares[6-1][8-1].setPiece(new Bishop(squares[6-1][8-1], PieceColor.BLACK));
+		squares[3-1][1-1].setPiece(new Bishop(squares[3-1][1-1], PieceColor.WHITE));
+		squares[6-1][1-1].setPiece(new Bishop(squares[6-1][1-1], PieceColor.WHITE));
+		
+		
+		currentPiece = null;
+		
+		whiteTurn = true;
+		firstClick = true;
 	}
-	*/
 	
-	
+		
 	
 	public void squareSelected(Square sq)
 	{
@@ -174,16 +203,5 @@ public class GameBoard extends JPanel {
 					s.resetBackground();
 	}
 	
-	/*
-	private class MouseHandler extends MouseAdapter
-	{
-		public void mouseClicked(MouseEvent e)
-		{
-			for (Square[] sa : squares)
-				for (Square s : sa)
-					s.resetBackground();
-		}
-	}
-	*/
-
+	
 }
