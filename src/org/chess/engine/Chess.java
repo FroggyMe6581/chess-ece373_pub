@@ -13,15 +13,21 @@ public class Chess {
 	static JButton reset;
 	static JButton exit;
 	static GameBoard board;
+	static JFrame frame;
+	static JPanel buttons;
 
 	public static void main(String[] args) {
-		JFrame frame = new JFrame("Chess");
+		frame = new JFrame("Chess");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setLayout(new BorderLayout());
 		
 		reset = new JButton("Reset");
 		exit = new JButton("Exit");
-		JPanel buttons = new JPanel();
+		ButtonListener bl = new ButtonListener();
+		reset.addActionListener(bl);
+		exit.addActionListener(bl);
+		
+		buttons = new JPanel();
 		buttons.setLayout(new FlowLayout());
 		buttons.add(reset);
 		buttons.add(exit);
@@ -32,10 +38,11 @@ public class Chess {
 		frame.add(buttons, BorderLayout.SOUTH);
 		frame.setSize(500, 500);
 		frame.setVisible(true);
-		
-		reset.addActionListener(new ButtonListener());
-		exit.addActionListener(new ButtonListener());
-
+	}
+	
+	public static void reset()
+	{
+		board.reset();
 	}
 	
 	

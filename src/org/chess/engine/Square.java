@@ -103,6 +103,7 @@ public class Square extends JTextField {
 		
 		addMouseListener(new MouseHandler());
 		setBorder(BorderFactory.createEmptyBorder());
+		setHorizontalAlignment(JTextField.CENTER);
 	}
 
 	public void resetBackground()
