@@ -151,7 +151,16 @@ public class Square extends JTextField {
 
 		return sq.getSquareLocation()[0] == this.getSquareLocation()[0];
 	}
-	
+/*	
+	//seung add
+	public boolean diagonalMove(Square sq){
+		if(sq == null)
+			throw new IllegalArgumentException();
+		
+		
+		
+	}
+*/	
 	/*
 	public void functionForTestingJComponentMethods()
 	{
@@ -165,8 +174,23 @@ public class Square extends JTextField {
 		{
 			if (Square.this.contains(e.getPoint()))
 			{
-				//Square.this.setBackground(Color.RED);
+				Color sqColor = Square.this.getBackground();
+				Square.this.setBackground(Color.RED);
+				
+				/*
+				try
+				{
+					Thread.sleep(1000);
+				} catch (InterruptedException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} */
+				
 				Square.board.squareSelected(Square.this);
+				
+				Square.this.setBackground(sqColor);
+				
+				
 			}
 		}
 	}
