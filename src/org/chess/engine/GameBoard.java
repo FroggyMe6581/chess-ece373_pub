@@ -36,6 +36,41 @@ public class GameBoard extends JPanel {
 		squares[8-1][1-1].setPiece(new Rook(squares[8-1][1-1], PieceColor.WHITE));
 		squares[1-1][1-1].setPiece(new Rook(squares[1-1][1-1], PieceColor.WHITE));
 		
+		squares[1-1][7-1].setPiece(new Pawn(squares[1-1][7-1], PieceColor.BLACK));
+		squares[2-1][7-1].setPiece(new Pawn(squares[2-1][7-1], PieceColor.BLACK));
+		squares[3-1][7-1].setPiece(new Pawn(squares[3-1][7-1], PieceColor.BLACK));
+		squares[4-1][7-1].setPiece(new Pawn(squares[4-1][7-1], PieceColor.BLACK));
+		squares[5-1][7-1].setPiece(new Pawn(squares[5-1][7-1], PieceColor.BLACK));
+		squares[6-1][7-1].setPiece(new Pawn(squares[6-1][7-1], PieceColor.BLACK));
+		squares[7-1][7-1].setPiece(new Pawn(squares[7-1][7-1], PieceColor.BLACK));
+		squares[8-1][7-1].setPiece(new Pawn(squares[8-1][7-1], PieceColor.BLACK));
+		
+		squares[1-1][2-1].setPiece(new Pawn(squares[1-1][2-1], PieceColor.WHITE));
+		squares[2-1][2-1].setPiece(new Pawn(squares[2-1][2-1], PieceColor.WHITE));
+		squares[3-1][2-1].setPiece(new Pawn(squares[3-1][2-1], PieceColor.WHITE));
+		squares[4-1][2-1].setPiece(new Pawn(squares[4-1][2-1], PieceColor.WHITE));
+		squares[5-1][2-1].setPiece(new Pawn(squares[5-1][2-1], PieceColor.WHITE));
+		squares[6-1][2-1].setPiece(new Pawn(squares[6-1][2-1], PieceColor.WHITE));
+		squares[7-1][2-1].setPiece(new Pawn(squares[7-1][2-1], PieceColor.WHITE));
+		squares[8-1][2-1].setPiece(new Pawn(squares[8-1][2-1], PieceColor.WHITE));
+		
+		squares[5-1][8-1].setPiece(new King(squares[5-1][8-1], PieceColor.BLACK));
+		squares[5-1][1-1].setPiece(new King(squares[5-1][1-1], PieceColor.WHITE));
+		
+		squares[4-1][8-1].setPiece(new Queen(squares[4-1][8-1], PieceColor.BLACK));
+		squares[4-1][1-1].setPiece(new Queen(squares[4-1][1-1], PieceColor.WHITE));
+		
+		squares[2-1][8-1].setPiece(new Knight(squares[2-1][8-1], PieceColor.BLACK));
+		squares[7-1][8-1].setPiece(new Knight(squares[7-1][8-1], PieceColor.BLACK));
+		squares[2-1][1-1].setPiece(new Knight(squares[2-1][1-1], PieceColor.WHITE));
+		squares[7-1][1-1].setPiece(new Knight(squares[7-1][1-1], PieceColor.WHITE));
+		
+		squares[3-1][8-1].setPiece(new Bishop(squares[3-1][8-1], PieceColor.BLACK));
+		squares[6-1][8-1].setPiece(new Bishop(squares[6-1][8-1], PieceColor.BLACK));
+		squares[3-1][1-1].setPiece(new Bishop(squares[3-1][1-1], PieceColor.WHITE));
+		squares[6-1][1-1].setPiece(new Bishop(squares[6-1][1-1], PieceColor.WHITE));
+		
+		
 		//firstClicked = null;
 		//secondClicked = null;
 		currentPiece = null;
