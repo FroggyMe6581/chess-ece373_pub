@@ -9,6 +9,7 @@ import java.awt.FlowLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JFileChooser;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
@@ -26,6 +27,7 @@ public class Chess extends JFrame {
 	static Chess frame;
 	static JPanel buttons;
 	static JMenuBar menubar;
+	static JFileChooser file_dialog;
 
 	public static void main(String[] args) {
 		frame = new Chess("Chess");
@@ -68,13 +70,28 @@ public class Chess extends JFrame {
 			menubar = new JMenuBar();
 			JMenu file_menu = new JMenu("File");
 			JMenuItem new_game = new JMenuItem("New Game");
-			JMenuItem quit_app = new JMenuItem("Quit");
+			JMenuItem load_game = new JMenuItem("Load Game");
+			JMenuItem save_game = new JMenuItem("Save");
+			JMenuItem quit_app = new JMenuItem("Exit");
+			file_dialog = new JFileChooser();
 
 			new_game.setMnemonic(KeyEvent.VK_Q);
 
 			new_game.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					frame.reset();
+				}
+			});
+
+			load_game.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					int res = file_dialog.showOpenDialog(frame);
+				}
+			});
+
+			save_game.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					int res = file_dialog.showSaveDialog(frame);
 				}
 			});
 
@@ -85,6 +102,9 @@ public class Chess extends JFrame {
 			});
 
 			file_menu.add(new_game);
+			file_menu.add(load_game);
+			file_menu.add(save_game);
+			file_menu.addSeparator();
 			file_menu.add(quit_app);
 
 			menubar.add(file_menu);

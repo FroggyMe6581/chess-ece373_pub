@@ -202,6 +202,4 @@ public class GameBoard extends JPanel {
 				if (s != sq)
 					s.resetBackground();
 	}
-	
-	
 }
