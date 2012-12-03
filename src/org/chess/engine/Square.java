@@ -13,6 +13,7 @@ public class Square extends JTextField {
 	private int[] location;
 	private int rank; // rows on the chess board, 1 to 8
 	private char file; // columns on the chess board, a to h
+	private Color sqColor;
 	
 	private static GameBoard board;
 
@@ -69,16 +70,28 @@ public class Square extends JTextField {
 		if( y % 2 == 0 ) //if even row
 		{
 			if ( x % 2 == 0 )
+			{
 				this.setBackground(Color.GRAY);
+				sqColor = Color.GRAY;
+			}
 			else
+			{
 				this.setBackground(Color.LIGHT_GRAY);
+				sqColor = Color.LIGHT_GRAY;
+			}
 		}
 		else //if odd row
 		{
 			if ( x % 2 == 0 )
+			{
 				this.setBackground(Color.LIGHT_GRAY);
+				sqColor = Color.LIGHT_GRAY;
+			}
 			else
+			{
 				this.setBackground(Color.GRAY);
+				sqColor = Color.GRAY;
+			}
 		}
 
 		this.setEditable(false);
@@ -92,6 +105,11 @@ public class Square extends JTextField {
 		setBorder(BorderFactory.createEmptyBorder());
 	}
 
+	public void resetBackground()
+	{
+		this.setBackground(sqColor);
+	}
+	
 	public int[] getSquareLocation() {
 		return location;
 	}
@@ -174,23 +192,9 @@ public class Square extends JTextField {
 		{
 			if (Square.this.contains(e.getPoint()))
 			{
-				Color sqColor = Square.this.getBackground();
 				Square.this.setBackground(Color.RED);
-				
-				/*
-				try
-				{
-					Thread.sleep(1000);
-				} catch (InterruptedException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				} */
-				
+				Square.board.resetSquareColors(Square.this);
 				Square.board.squareSelected(Square.this);
-				
-				Square.this.setBackground(sqColor);
-				
-				
 			}
 		}
 	}
