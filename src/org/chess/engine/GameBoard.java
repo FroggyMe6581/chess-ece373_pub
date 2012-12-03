@@ -2,6 +2,8 @@ package org.chess.engine;
 
 import java.awt.ComponentOrientation;
 import java.awt.GridLayout;
+//import java.awt.event.MouseAdapter;
+//import java.awt.event.MouseEvent;
 
 import javax.swing.JPanel;
 
@@ -77,6 +79,8 @@ public class GameBoard extends JPanel {
 		
 		whiteTurn = true;
 		firstClick = true;
+		
+		//addMouseListener(new MouseHandler());
 	}
 	
 	
@@ -161,5 +165,25 @@ public class GameBoard extends JPanel {
 			}
 		}
 	}
+	
+	public void resetSquareColors(Square sq)
+	{
+		for (Square[] sa : squares)
+			for (Square s : sa)
+				if (s != sq)
+					s.resetBackground();
+	}
+	
+	/*
+	private class MouseHandler extends MouseAdapter
+	{
+		public void mouseClicked(MouseEvent e)
+		{
+			for (Square[] sa : squares)
+				for (Square s : sa)
+					s.resetBackground();
+		}
+	}
+	*/
 
 }
