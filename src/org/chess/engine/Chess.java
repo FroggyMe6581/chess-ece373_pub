@@ -34,10 +34,20 @@ public class Chess extends JFrame {
 
 		reset = new JButton("Reset");
 		exit = new JButton("Exit");
-		ButtonListener bl = new ButtonListener();
-		reset.addActionListener(bl);
-		exit.addActionListener(bl);
 
+		ActionListener action = new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (e.getSource() == Chess.reset) {
+					frame.reset();
+				} else if (e.getSource() == Chess.exit) {
+					System.exit(0);
+				}
+
+			}
+		};
+
+		reset.addActionListener(action);
+		exit.addActionListener(action);
 		buttons = new JPanel();
 		buttons.setLayout(new FlowLayout());
 		buttons.add(reset);
@@ -91,4 +101,5 @@ public class Chess extends JFrame {
 		dispose();
 		System.exit(0);
 	}
+
 }
