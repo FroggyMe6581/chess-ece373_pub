@@ -10,11 +10,25 @@ public class Queen extends Piece{
 	// Square sq is potential destination square for piece
 	public boolean isValidMove(Square sq) {
 		if (sq.sharesRowWith(this.getCurrentSquare())
-				&& !sq.sharesColumnWith(this.getCurrentSquare()))
-			return true;
+				&& !sq.sharesColumnWith(this.getCurrentSquare())){
+			if(!sq.pieceIsBetweenCol(this.getCurrentSquare()))
+				return true;
+			else
+				return false;
+		}
 		else if (!sq.sharesRowWith(this.getCurrentSquare())
-				&& sq.sharesColumnWith(this.getCurrentSquare()))
-			return true;
+				&& sq.sharesColumnWith(this.getCurrentSquare())){
+			if(!sq.pieceIsBetweenRow(this.getCurrentSquare()))
+				return true;
+			else
+				return false;
+		}
+		else if(sq.isOnDiagonal(this.getCurrentSquare())){
+			if(sq.pieceIsBetweenDiag(this.getCurrentSquare()))
+				return false;
+			else 
+				return true;
+		}
 		else
 			return false;
 	}

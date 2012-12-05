@@ -170,16 +170,106 @@ public class Square extends JTextField {
 
 		return sq.getSquareLocation()[0] == this.getSquareLocation()[0];
 	}
-/*	
-	//seung add
-	public boolean diagonalMove(Square sq){
+	
+	//seung
+	public boolean isOnDiagonal(Square sq){
 		if(sq == null)
 			throw new IllegalArgumentException();
 		
+		int col = this.getSquareLocation()[0] - sq.getSquareLocation()[0];
+		int row = this.getSquareLocation()[1] - sq.getSquareLocation()[1];
 		
+		if(Math.abs(col)==Math.abs(row))
+			return true;
+		else
+			return false;
+	}
+	
+	//seung 
+	public boolean pieceIsBetweenRow(Square sq){
+		if(sq == null)
+			throw new IllegalArgumentException();
+		
+		int col = this.getSquareLocation()[0]-1;
+		
+		for(int i = 0; i< 8; i++){
+			if(board.isPieceOnSquare(col, i)){
+				if(i<this.getSquareLocation()[1]-1 && i>sq.getSquareLocation()[1]-1)
+						return true;
+				
+				else if(i>this.getSquareLocation()[1]-1 && i<sq.getSquareLocation()[1]-1)
+						return true;
+			}
+		}
+		return false;
+	}
+	
+	//seung 
+	public boolean pieceIsBetweenCol(Square sq){
+		if(sq == null)
+			throw new IllegalArgumentException();
+		
+		int row = this.getSquareLocation()[1]-1;
+		
+		for(int i = 0; i< 8; i++){
+			if(board.isPieceOnSquare(i, row)){
+				if(i<this.getSquareLocation()[0]-1 && i>sq.getSquareLocation()[0]-1)
+						return true;
+				
+				else if(i>this.getSquareLocation()[0]-1 && i<sq.getSquareLocation()[0]-1)
+						return true;
+			}
+		}
+		return false;
 		
 	}
-*/	
+	//seung 
+	public boolean pieceIsBetweenDiag(Square sq){
+		if(sq == null)
+			throw new IllegalArgumentException();
+		
+		int col[] = new int[2];
+		int row[] = new int[2];
+		
+		col[0] = this.getSquareLocation()[0]-1;
+		row[0] = this.getSquareLocation()[1]-1;
+		col[1] = sq.getSquareLocation()[0]-1;
+		row[1] = sq.getSquareLocation()[1]-1;
+		
+		if(col[1]>col[0]){
+			if(row[1]>row[0]){
+				for(int i = 1; i<col[1]-col[0]; i++){
+					if(board.isPieceOnSquare(col[0]+i, row[0]+i))
+						return true;
+				}
+			}
+			else if(row[1]<row[0]){
+				for(int i = 1; i<col[1]-col[0]; i++){
+					if(board.isPieceOnSquare(col[0]+i, row[0]-i))
+						return true;
+				}
+			}
+			else return false;
+		}
+		else{
+			if(row[1]>row[0]){
+				for(int i = 1; i<col[0]-col[1]; i++){
+					if(board.isPieceOnSquare(col[0]-i, row[0]+i))
+						return true;
+				}
+			}
+			else if(row[1]<row[0]){
+				for(int i = 1; i<col[0]-col[1]; i++){
+					if(board.isPieceOnSquare(col[0]-i, row[0]-i))
+						return true;
+				}
+			}
+			else return false;
+		}
+		return false;
+	}
+	
+	
 	/*
 	public void functionForTestingJComponentMethods()
 	{

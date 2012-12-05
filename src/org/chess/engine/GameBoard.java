@@ -130,7 +130,15 @@ public class GameBoard extends JPanel {
 		firstClick = true;
 	}
 	
-		
+	//seung
+	//to check whether piece is on square or not
+	public boolean isPieceOnSquare(int x, int y){
+		if(squares[x][y].getPiece()!=null){
+			return true;
+		}
+		else
+			return false;
+	}
 	
 	public void squareSelected(Square sq)
 	{
