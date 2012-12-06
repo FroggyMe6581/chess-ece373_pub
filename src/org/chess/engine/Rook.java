@@ -1,12 +1,20 @@
 package org.chess.engine;
 
 public class Rook extends Piece {
-
+/*
 	public Rook(Square sq, PieceColor color) {
 		super(sq, color);
 		setName("Rook");
 	}
-
+*/
+	public Rook(Square sq, PieceColor color) {
+		super(sq, color);
+		setName("Rook");
+		if(color == PieceColor.WHITE)
+			setImage("white_rook.png");
+		else
+			setImage("black_rook.png");
+	}
 	// Square sq is potential destination square for piece
 	public boolean isValidMove(Square sq) {
 		

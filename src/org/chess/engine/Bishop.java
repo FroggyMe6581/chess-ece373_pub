@@ -5,6 +5,10 @@ public class Bishop extends Piece{
 	public Bishop(Square sq, PieceColor color) {
 		super(sq, color);
 		setName("Bishop");
+		if(color == PieceColor.WHITE)
+			setImage("white_bishop.png");
+		else
+			setImage("black_bishop.png");
 	}
 
 	// Square sq is potential destination square for piece

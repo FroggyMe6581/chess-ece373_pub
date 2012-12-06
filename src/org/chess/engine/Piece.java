@@ -1,15 +1,20 @@
 package org.chess.engine;
 
+import javax.swing.ImageIcon;
+
 public abstract class Piece {
 	private Square location;
 	private String name;
 	private PieceColor color;
+//seung	
+	private ImageIcon image;
 
 	public Piece(Square sq, PieceColor color) {
 		this.color = color;
 		setCurrentSquare(sq);
 	}
 
+	
 	public final Square getCurrentSquare() {
 		return location;
 	}
@@ -18,8 +23,11 @@ public abstract class Piece {
 		if (location != null)
 			location.removePiece();
 
+		
 		location = sq;
+		
 		sq.setPiece(this);
+		//sq.setPieceImage(this.image);
 	}
 	
 	public final PieceColor getPieceColor() {
@@ -40,4 +48,13 @@ public abstract class Piece {
 	public String getPieceType() {
 		return name;
 	}
+	
+	public void setImage(String str){
+		this.image = new ImageIcon(""+str+"");
+	}
+	public ImageIcon getImage(){
+		return image;
+	}
+
+	
 }

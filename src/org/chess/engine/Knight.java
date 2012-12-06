@@ -5,6 +5,10 @@ public class Knight extends Piece{
 	public Knight(Square sq, PieceColor color) {
 		super(sq, color);
 		setName("Knight");
+		if(color == PieceColor.WHITE)
+			setImage("white_knight.png");
+		else
+			setImage("black_knight.png");
 	}
 
 	// Square sq is potential destination square for piece

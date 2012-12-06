@@ -5,6 +5,10 @@ public class King extends Piece{
 	public King(Square sq, PieceColor color) {
 		super(sq, color);
 		setName("King");
+		if(color == PieceColor.WHITE)
+			setImage("white_king.png");
+		else
+			setImage("black_king.png");
 	}
 
 	// Square sq is potential destination square for piece
