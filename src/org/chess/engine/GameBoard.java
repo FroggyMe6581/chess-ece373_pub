@@ -3,6 +3,7 @@ package org.chess.engine;
 import java.awt.ComponentOrientation;
 import java.awt.GridLayout;
 
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 public class GameBoard extends JPanel {
@@ -184,9 +185,16 @@ public class GameBoard extends JPanel {
 				{
 					if( currentPiece.movePiece(sq) )
 					{
-						whiteTurn = !whiteTurn;
-						firstClick = true;
-						currentPiece = null;
+						if(destPiece.getPieceType().equals("King")){
+							JOptionPane.showMessageDialog(null, ""+currentPiece.getPieceColor()+" Wins!!!!");	
+							this.reset();
+							
+						}
+						else{
+							whiteTurn = !whiteTurn;
+							firstClick = true;
+							currentPiece = null;
+						}
 					}
 					else //tried to attack, but couldn't validly move there
 					{
