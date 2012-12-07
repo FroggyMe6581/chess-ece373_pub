@@ -188,11 +188,13 @@ public class GameBoard extends JPanel {
 						if(destPiece.getPieceType().equals("King")){
 							JOptionPane.showMessageDialog(null, ""+currentPiece.getPieceColor()+" Wins!!!!");	
 							this.reset();
+							
 						}
-						whiteTurn = !whiteTurn;
-						firstClick = true;
-						currentPiece = null;
-						
+						else{
+							whiteTurn = !whiteTurn;
+							firstClick = true;
+							currentPiece = null;
+						}
 					}
 					else //tried to attack, but couldn't validly move there
 					{
