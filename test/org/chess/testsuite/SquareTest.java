@@ -12,10 +12,9 @@ import org.chess.engine.PieceColor;
 import org.chess.engine.Square;
 
 public class SquareTest {
-	
+
 	GameBoard genericGameBoard = new GameBoard();
-	
-	
+
 	Square sq1 = new Square(5, 5, genericGameBoard);
 	Square sq2 = new Square(5, 1, genericGameBoard);
 	Square sq3 = new Square(1, 5, genericGameBoard);

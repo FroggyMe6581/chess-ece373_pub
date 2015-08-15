@@ -18,16 +18,15 @@ public class Square extends JPanel {
 	private int rank; // rows on the chess board, 1 to 8
 	private char file; // columns on the chess board, a to h
 	private Color sqColor;
-	
-	private static GameBoard board;
-	
-	private JLabel label;
 
+	private static GameBoard board;
+
+	private JLabel label;
 
 	/*
 	 * Note that 1a is a black square in lower left corner, with white player on
 	 * bottom of board and 8h is a black square in upper right.
-	 * 
+	 *
 	 * Let's use the convention that our integer index location is (1,1) to
 	 * (8,8) with (1,1) in lower left corner, and (8,8) in upper right corner.
 	 * That way we only need to map the file, as rank will already be the same
@@ -72,7 +71,7 @@ public class Square extends JPanel {
 		default:
 			throw new IllegalArgumentException();
 		}
-		
+
 		// set color of square based on its location in the grid
 		if( y % 2 == 0 ) //if even row
 		{
@@ -102,13 +101,12 @@ public class Square extends JPanel {
 		}
 
 	//	this.setEditable(false);
-	
-		
+
 		piece = null; 	// piece not instantiated here, added by
 						// pointing to a Piece in a method below
-		
+
 		board = gb;
-		
+
 		addMouseListener(new MouseHandler());
 		setBorder(BorderFactory.createEmptyBorder());
 	//	setHorizontalAlignment(JTextField.CENTER);
@@ -120,7 +118,7 @@ public class Square extends JPanel {
 	{
 		this.setBackground(sqColor);
 	}
-	
+
 	public int[] getSquareLocation() {
 		return location;
 	}
@@ -142,35 +140,33 @@ public class Square extends JPanel {
 		switch (color) {
 		case BLACK: this.setForeground(Color.BLACK);
 					break;
-					
+
 		case WHITE: this.setForeground(Color.YELLOW);
 					break;
 		}
 		this.piece = piece;
-		
-		
+
 		//this.setText(piece.getPieceType());
-		
+
 		this.setPieceImage(piece.getImage());
-		
+
 	}
 	public void setPieceImage(ImageIcon i){
-		
+
 		label.setIcon(i);
 		this.add(label);
-		
+
 	}
 
 	public void removePiece() {
-		
+
 		piece = null;
 	//	this.setText("");
 		//this.remove(label);
 		label.setIcon(null);
 //		label = new JLabel();
 		this.add(label);
-				
-	
+
 	}
 
 	public boolean equals(Object obj) {
@@ -198,72 +194,72 @@ public class Square extends JPanel {
 
 		return sq.getSquareLocation()[0] == this.getSquareLocation()[0];
 	}
-	
+
 	//seung
 	public boolean isOnDiagonal(Square sq){
 		if(sq == null)
 			throw new IllegalArgumentException();
-		
+
 		int col = this.getSquareLocation()[0] - sq.getSquareLocation()[0];
 		int row = this.getSquareLocation()[1] - sq.getSquareLocation()[1];
-		
+
 		if(Math.abs(col)==Math.abs(row))
 			return true;
 		else
 			return false;
 	}
-	
-	//seung 
+
+	//seung
 	public boolean pieceIsBetweenRow(Square sq){
 		if(sq == null)
 			throw new IllegalArgumentException();
-		
+
 		int col = this.getSquareLocation()[0]-1;
-		
+
 		for(int i = 0; i< 8; i++){
 			if(board.isPieceOnSquare(col, i)){
 				if(i<this.getSquareLocation()[1]-1 && i>sq.getSquareLocation()[1]-1)
 						return true;
-				
+
 				else if(i>this.getSquareLocation()[1]-1 && i<sq.getSquareLocation()[1]-1)
 						return true;
 			}
 		}
 		return false;
 	}
-	
-	//seung 
+
+	//seung
 	public boolean pieceIsBetweenCol(Square sq){
 		if(sq == null)
 			throw new IllegalArgumentException();
-		
+
 		int row = this.getSquareLocation()[1]-1;
-		
+
 		for(int i = 0; i< 8; i++){
 			if(board.isPieceOnSquare(i, row)){
 				if(i<this.getSquareLocation()[0]-1 && i>sq.getSquareLocation()[0]-1)
 						return true;
-				
+
 				else if(i>this.getSquareLocation()[0]-1 && i<sq.getSquareLocation()[0]-1)
 						return true;
 			}
 		}
 		return false;
-		
+
 	}
-	//seung 
+	//seung
 	public boolean pieceIsBetweenDiag(Square sq){
 		if(sq == null)
 			throw new IllegalArgumentException();
-		
+
 		int col[] = new int[2];
 		int row[] = new int[2];
-		
+
 		col[0] = this.getSquareLocation()[0]-1;
 		row[0] = this.getSquareLocation()[1]-1;
 		col[1] = sq.getSquareLocation()[0]-1;
 		row[1] = sq.getSquareLocation()[1]-1;
-		
+
 		if(col[1]>col[0]){
 			if(row[1]>row[0]){
 				for(int i = 1; i<col[1]-col[0]; i++){
@@ -296,15 +292,14 @@ public class Square extends JPanel {
 		}
 		return false;
 	}
-	
-	
+
 	/*
 	public void functionForTestingJComponentMethods()
 	{
 		board.squareSelected(new Square(1,1,board));
 	}
 	*/
-	
+
 	private class MouseHandler extends MouseAdapter
 	{
 		public void mouseClicked(MouseEvent e)

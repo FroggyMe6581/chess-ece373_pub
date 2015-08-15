@@ -17,7 +17,7 @@ public class Rook extends Piece {
 	}
 	// Square sq is potential destination square for piece
 	public boolean isValidMove(Square sq) {
-		
+
 		if (sq.sharesRowWith(this.getCurrentSquare())
 				&& !sq.sharesColumnWith(this.getCurrentSquare())){
 			if(sq.pieceIsBetweenCol(this.getCurrentSquare()))

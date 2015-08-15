@@ -30,7 +30,7 @@ public class Queen extends Piece{
 		else if(sq.isOnDiagonal(this.getCurrentSquare())){
 			if(sq.pieceIsBetweenDiag(this.getCurrentSquare()))
 				return false;
-			else 
+			else
 				return true;
 		}
 		else
@@ -45,5 +45,5 @@ public class Queen extends Piece{
 		}
 		return false;
 	}
-	
+
 }

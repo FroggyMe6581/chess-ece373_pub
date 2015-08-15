@@ -15,7 +15,7 @@ public class Knight extends Piece{
 	public boolean isValidMove(Square sq) {
 		int col_diff = sq.getSquareLocation()[0] - this.getCurrentSquare().getSquareLocation()[0];
 		int row_diff = sq.getSquareLocation()[1] - this.getCurrentSquare().getSquareLocation()[1];
-		
+
 		if(Math.abs(col_diff)==1 && Math.abs(row_diff)==2){
 			return true;
 		}
@@ -34,5 +34,5 @@ public class Knight extends Piece{
 		}
 		return false;
 	}
-	
+
 }

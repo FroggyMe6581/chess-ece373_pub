@@ -15,10 +15,10 @@ public class GameBoard extends JPanel {
 
 	public GameBoard() {
 		squares = new Square[8][8];
-		
+
 		setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
 		setLayout(new GridLayout(8,8));
-		
+
 		// filling up grid from right to left, top to bottom, so must index in reverse
 		// per the way the chessboard is marked
 		Square currentSquare;
@@ -29,12 +29,12 @@ public class GameBoard extends JPanel {
 				add(currentSquare);
 				squares[j-1][i-1] = currentSquare;
 			}
-		
+
 		squares[8-1][8-1].setPiece(new Rook(squares[8-1][8-1], PieceColor.BLACK));
 		squares[1-1][8-1].setPiece(new Rook(squares[1-1][8-1], PieceColor.BLACK));
 		squares[8-1][1-1].setPiece(new Rook(squares[8-1][1-1], PieceColor.WHITE));
 		squares[1-1][1-1].setPiece(new Rook(squares[1-1][1-1], PieceColor.WHITE));
-		
+
 		squares[1-1][7-1].setPiece(new Pawn(squares[1-1][7-1], PieceColor.BLACK));
 		squares[2-1][7-1].setPiece(new Pawn(squares[2-1][7-1], PieceColor.BLACK));
 		squares[3-1][7-1].setPiece(new Pawn(squares[3-1][7-1], PieceColor.BLACK));
@@ -43,7 +43,7 @@ public class GameBoard extends JPanel {
 		squares[6-1][7-1].setPiece(new Pawn(squares[6-1][7-1], PieceColor.BLACK));
 		squares[7-1][7-1].setPiece(new Pawn(squares[7-1][7-1], PieceColor.BLACK));
 		squares[8-1][7-1].setPiece(new Pawn(squares[8-1][7-1], PieceColor.BLACK));
-		
+
 		squares[1-1][2-1].setPiece(new Pawn(squares[1-1][2-1], PieceColor.WHITE));
 		squares[2-1][2-1].setPiece(new Pawn(squares[2-1][2-1], PieceColor.WHITE));
 		squares[3-1][2-1].setPiece(new Pawn(squares[3-1][2-1], PieceColor.WHITE));
@@ -52,44 +52,43 @@ public class GameBoard extends JPanel {
 		squares[6-1][2-1].setPiece(new Pawn(squares[6-1][2-1], PieceColor.WHITE));
 		squares[7-1][2-1].setPiece(new Pawn(squares[7-1][2-1], PieceColor.WHITE));
 		squares[8-1][2-1].setPiece(new Pawn(squares[8-1][2-1], PieceColor.WHITE));
-		
+
 		squares[5-1][8-1].setPiece(new King(squares[5-1][8-1], PieceColor.BLACK));
 		squares[5-1][1-1].setPiece(new King(squares[5-1][1-1], PieceColor.WHITE));
-		
+
 		squares[4-1][8-1].setPiece(new Queen(squares[4-1][8-1], PieceColor.BLACK));
 		squares[4-1][1-1].setPiece(new Queen(squares[4-1][1-1], PieceColor.WHITE));
-		
+
 		squares[2-1][8-1].setPiece(new Knight(squares[2-1][8-1], PieceColor.BLACK));
 		squares[7-1][8-1].setPiece(new Knight(squares[7-1][8-1], PieceColor.BLACK));
 		squares[2-1][1-1].setPiece(new Knight(squares[2-1][1-1], PieceColor.WHITE));
 		squares[7-1][1-1].setPiece(new Knight(squares[7-1][1-1], PieceColor.WHITE));
-		
+
 		squares[3-1][8-1].setPiece(new Bishop(squares[3-1][8-1], PieceColor.BLACK));
 		squares[6-1][8-1].setPiece(new Bishop(squares[6-1][8-1], PieceColor.BLACK));
 		squares[3-1][1-1].setPiece(new Bishop(squares[3-1][1-1], PieceColor.WHITE));
 		squares[6-1][1-1].setPiece(new Bishop(squares[6-1][1-1], PieceColor.WHITE));
-		
-		
+
 		currentPiece = null;
-		
+
 		whiteTurn = true;
 		firstClick = true;
 	}
-	
+
 	public void reset()
 	{
 		// clear all pieces
 		for(int i = 8; i > 0; i--)			//i is y value
 			for(int j = 8; j > 0; j--)		//j is x value
 				squares[j-1][i-1].removePiece();
-		
+
 		System.gc();
-		
+
 		squares[8-1][8-1].setPiece(new Rook(squares[8-1][8-1], PieceColor.BLACK));
 		squares[1-1][8-1].setPiece(new Rook(squares[1-1][8-1], PieceColor.BLACK));
 		squares[8-1][1-1].setPiece(new Rook(squares[8-1][1-1], PieceColor.WHITE));
 		squares[1-1][1-1].setPiece(new Rook(squares[1-1][1-1], PieceColor.WHITE));
-		
+
 		squares[1-1][7-1].setPiece(new Pawn(squares[1-1][7-1], PieceColor.BLACK));
 		squares[2-1][7-1].setPiece(new Pawn(squares[2-1][7-1], PieceColor.BLACK));
 		squares[3-1][7-1].setPiece(new Pawn(squares[3-1][7-1], PieceColor.BLACK));
@@ -98,7 +97,7 @@ public class GameBoard extends JPanel {
 		squares[6-1][7-1].setPiece(new Pawn(squares[6-1][7-1], PieceColor.BLACK));
 		squares[7-1][7-1].setPiece(new Pawn(squares[7-1][7-1], PieceColor.BLACK));
 		squares[8-1][7-1].setPiece(new Pawn(squares[8-1][7-1], PieceColor.BLACK));
-		
+
 		squares[1-1][2-1].setPiece(new Pawn(squares[1-1][2-1], PieceColor.WHITE));
 		squares[2-1][2-1].setPiece(new Pawn(squares[2-1][2-1], PieceColor.WHITE));
 		squares[3-1][2-1].setPiece(new Pawn(squares[3-1][2-1], PieceColor.WHITE));
@@ -107,30 +106,29 @@ public class GameBoard extends JPanel {
 		squares[6-1][2-1].setPiece(new Pawn(squares[6-1][2-1], PieceColor.WHITE));
 		squares[7-1][2-1].setPiece(new Pawn(squares[7-1][2-1], PieceColor.WHITE));
 		squares[8-1][2-1].setPiece(new Pawn(squares[8-1][2-1], PieceColor.WHITE));
-		
+
 		squares[5-1][8-1].setPiece(new King(squares[5-1][8-1], PieceColor.BLACK));
 		squares[5-1][1-1].setPiece(new King(squares[5-1][1-1], PieceColor.WHITE));
-		
+
 		squares[4-1][8-1].setPiece(new Queen(squares[4-1][8-1], PieceColor.BLACK));
 		squares[4-1][1-1].setPiece(new Queen(squares[4-1][1-1], PieceColor.WHITE));
-		
+
 		squares[2-1][8-1].setPiece(new Knight(squares[2-1][8-1], PieceColor.BLACK));
 		squares[7-1][8-1].setPiece(new Knight(squares[7-1][8-1], PieceColor.BLACK));
 		squares[2-1][1-1].setPiece(new Knight(squares[2-1][1-1], PieceColor.WHITE));
 		squares[7-1][1-1].setPiece(new Knight(squares[7-1][1-1], PieceColor.WHITE));
-		
+
 		squares[3-1][8-1].setPiece(new Bishop(squares[3-1][8-1], PieceColor.BLACK));
 		squares[6-1][8-1].setPiece(new Bishop(squares[6-1][8-1], PieceColor.BLACK));
 		squares[3-1][1-1].setPiece(new Bishop(squares[3-1][1-1], PieceColor.WHITE));
 		squares[6-1][1-1].setPiece(new Bishop(squares[6-1][1-1], PieceColor.WHITE));
-		
-		
+
 		currentPiece = null;
-		
+
 		whiteTurn = true;
 		firstClick = true;
 	}
-	
+
 	//seung
 	//to check whether piece is on square or not
 	public boolean isPieceOnSquare(int x, int y){
@@ -140,7 +138,7 @@ public class GameBoard extends JPanel {
 		else
 			return false;
 	}
-	
+
 	public void squareSelected(Square sq)
 	{
 		Piece piece;
@@ -157,7 +155,7 @@ public class GameBoard extends JPanel {
 					currentPiece = piece;
 					firstClick = false;		//got a piece (not null) and it's the player's color
 				}
-				
+
 			}
 		}
 		else	//second click with valid currentPiece, sq is destination
@@ -186,9 +184,9 @@ public class GameBoard extends JPanel {
 					if( currentPiece.movePiece(sq) )
 					{
 						if(destPiece.getPieceType().equals("King")){
-							JOptionPane.showMessageDialog(null, ""+currentPiece.getPieceColor()+" Wins!!!!");	
+							JOptionPane.showMessageDialog(null, ""+currentPiece.getPieceColor()+" Wins!!!!");
 							this.reset();
-							
+
 						}
 						else{
 							whiteTurn = !whiteTurn;
@@ -210,7 +208,7 @@ public class GameBoard extends JPanel {
 			}
 		}
 	}
-	
+
 	public void resetSquareColors(Square sq)
 	{
 		for (Square[] sa : squares)

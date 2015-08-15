@@ -17,7 +17,7 @@ public class RookTest {
 	int file, rank, file2, rank2;
 	Square sq1, sq2;
 	Rook r;
-	
+
 	GameBoard genericGameBoard = new GameBoard();
 
 	@Before
@@ -60,7 +60,7 @@ public class RookTest {
 	@Test
 	public void movePeiceTest() {
 		r.movePiece(sq2);
-		
+
 		if (rank == rank2 && file != file2)
 			assertEquals(r.getCurrentSquare(), sq2);
 		else if (file == file2 && rank != rank2)

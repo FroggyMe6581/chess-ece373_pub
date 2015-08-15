@@ -14,7 +14,7 @@ import org.chess.engine.Piece;
 public class PieceTest {
 	int rank, file;
 	Square sq1;
-	
+
 	GameBoard genericGameBoard = new GameBoard();
 
 	@Before

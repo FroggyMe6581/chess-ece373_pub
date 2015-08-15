@@ -16,7 +16,7 @@ public class Bishop extends Piece{
 		if(sq.isOnDiagonal(this.getCurrentSquare())){
 			if(!sq.pieceIsBetweenDiag(this.getCurrentSquare()))
 				return true;
-			else 
+			else
 				return false;
 		}
 		return false;
@@ -30,5 +30,5 @@ public class Bishop extends Piece{
 		}
 		return false;
 	}
-	
+
 }
